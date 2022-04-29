@@ -26,6 +26,10 @@ public partial class Form1 : Form
     public Boolean CADestatus;
     public Boolean EURestatus;
     public Boolean JPYestatus;
+    //Declaamos el boton calcular que sera el respnsable de accionar el evento para la conversion
+    Button? btnCalcular;
+    Label? lblConversion;
+
 
 
     public Form1()
@@ -92,15 +96,15 @@ public partial class Form1 : Form
         lblMoneda.AutoSize = true;
         lblMoneda.Location = new Point(10, 10);
         //Combobox donde agregamos los tipos de monedas que estan disponibles
-        cmbMonedas = new ComboBox();
-        cmbMonedas.Size = new Size(160, 20);
-        cmbMonedas.Items.Add("Peso mexicano");
-        cmbMonedas.Items.Add("Dolar estadounidense");
-        cmbMonedas.Items.Add("Dolar canadiense");
-        cmbMonedas.Items.Add("Euro");
-        cmbMonedas.Items.Add("Yen japones");
-        cmbMonedas.SelectedValueChanged += new EventHandler(cmbMonedas_ValueChanged);
-        cmbMonedas.Location = new Point(10, 40);
+        cmbMoneda = new ComboBox();
+        cmbMoneda.Size = new Size(160, 20);
+        cmbMoneda.Items.Add("Peso mexicano");
+        cmbMoneda.Items.Add("Dolar estadounidense");
+        cmbMoneda.Items.Add("Dolar canadiense");
+        cmbMoneda.Items.Add("Euro");
+        cmbMoneda.Items.Add("Yen japones");
+        cmbMoneda.SelectedValueChanged += new EventHandler(cmbMoneda_ValueChanged);
+        cmbMoneda.Location = new Point(10, 40);
         //Etiqueta Monto
         lblMonto = new Label();
         lblMonto.Text = "Monto";
@@ -118,10 +122,10 @@ public partial class Form1 : Form
         btnCalcular.Location = new Point(175, 77);
         btnCalcular.Click += new EventHandler(btnVentana_Click);
         //Etiqueta Conversion
-        lblConversiones = new Label();
-        lblConversiones.Text = "Conversion";
-        lblConversiones.AutoSize = true;
-        lblConversiones.Location = new Point(10, 110);
+        lblConversion = new Label();
+        lblConversion.Text = "Conversion";
+        lblConversion.AutoSize = true;
+        lblConversion.Location = new Point(10, 110);
 
         this.Controls.Add(lblMXN);
         this.Controls.Add(lblUSD);
@@ -252,26 +256,26 @@ public partial class Form1 : Form
         }
     }
 
-    private void cmbMonedas_ValueChanged(object sender, EventArgs e) {
-        if (cmbMonedas.SelectedItem != null && txtMonto != null) {
+    private void cmbMoneda_ValueChanged(object sender, EventArgs e) {
+        if (cmbMoneda.SelectedItem != null && txtMonto != null) {
             
-            if (cmbMonedas.SelectedItem.ToString() == "Peso mexicano") {
+            if (cmbMoneda.SelectedItem.ToString() == "Peso mexicano") {
                 btnCalcular.Visible = true;
                 monedaEscogida = "MXN";
             }
-            else if (cmbMonedas.SelectedItem.ToString() == "Dolar estadounidense") {
+            else if (cmbMoneda.SelectedItem.ToString() == "Dolar estadounidense") {
                 btnCalcular.Visible = true;
                 monedaEscogida = "USD";
             }
-            else if (cmbMonedas.SelectedItem.ToString() == "Dolar canadiense") {
+            else if (cmbMoneda.SelectedItem.ToString() == "Dolar canadiense") {
                 btnCalcular.Visible = true;
                 monedaEscogida = "CAD";
             }
-            else if (cmbMonedas.SelectedItem.ToString() == "Euro") {
+            else if (cmbMoneda.SelectedItem.ToString() == "Euro") {
                 btnCalcular.Visible = true;
                 monedaEscogida = "EUR";
             }
-            else if (cmbMonedas.SelectedItem.ToString() == "Yen japones") {
+            else if (cmbMoneda.SelectedItem.ToString() == "Yen japones") {
                 btnCalcular.Visible = true;
                 monedaEscogida = "JPY";
             }
