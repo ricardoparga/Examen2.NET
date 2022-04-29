@@ -21,6 +21,11 @@ public partial class Form1 : Form
     TextBox? txtMonto;
     //String para guardar la moneda que el usuario haya escogido
     public string monedaEscogida = "";
+    public Boolean MXNestatus;
+    public Boolean USDestatus;
+    public Boolean CADestatus;
+    public Boolean EURestatus;
+    public Boolean JPYestatus;
 
 
     public Form1()
